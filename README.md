@@ -2,7 +2,7 @@
 
 Cloud notes is a simple notes app where notes are stored in cloud.
 
-To run the project first install required dependencies
+To run the project first install required dependencies. You also need to provide the mongodb database URL
 ```
 npm i
 ```
