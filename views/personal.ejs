@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal notes</title>
+    <link rel="shortcut icon" href="notepad.png" type="image/x-icon">
+    <link rel="stylesheet" href="personal.css">
+</head>
+
+<body>
+    <a href="/logout" class="logout">Logout</a>
+    <h1>Hello <%= username %>, Your notes</h1>
+
+
+    <% notes.forEach((note)=>{ %>
+            <div id="<%= Math.random().toString("16").slice(2,10) %> " class="myNote">
+                <form action="/fullnote" method="POST">
+                    <input type="hidden" name="title" value="<%= note.title %> ">
+                    <input type="hidden" name="body" value="<%= note.body %> ">
+                    <input type="submit" value="View">
+                </form>
+                <img onclick="deleteNote(id)" src="delete.png" alt="delete button" class="delete-btn" id="<%= note.id %>">
+                <p class="title"><%= note.title %></p>
+                <p class="note"><%= note.body.slice(0,120) + ".." %></p>
+            </div>
+
+    <% }) %>
+
+            <a href="/note">
+                <button class="newNoteButton">
+                    Create a new note
+                </button>
+            </a>
+
+            <script>
+                function deleteNote(id) {
+                    fetch("/deletenote", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: "id=" + id
+                    })
+                        .then((response) => { return response.json() })
+                        .then((data) => {
+                            if (data.remove === true) {
+                                remove(id)
+                            }
+                            else {
+                                console.log("not to be removed")
+                            }
+                        })
+                }
+
+                function remove(id) {
+                    const element = document.getElementById(id)
+
+                    element.parentElement.style.animationName = "remove";
+                    element.parentElement.style.animationDuration = "1s";
+                    element.parentElement.style.animationFillMode = "forwards"
+                    setTimeout(() => {
+                        element.parentElement.remove()
+                    }, 500);
+                }
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "personal-notes",
+  "version": "1.0.2",
+  "description": "Save notes in Cloud.",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Andrew",
+  "license": "GPL-3",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1",
+    "sha.js": "^2.4.11"
+  }
+}

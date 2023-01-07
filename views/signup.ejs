@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="shortcut icon" href="notepad.png" type="image/x-icon">
+</head>
+
+<body>
+    <a class="login_top" href="/login">Log in</a>
+    <h1>Create a new account</h1>
+
+    <div class="form">
+        <form action="/signup" method="post">
+            <p>Username</p>
+            <input type="text" name="username" id="username" autofocus required>
+            <p>Password</p>
+            <input type="password" name="password" id="password" required minlength="5">    
+
+            <input class="login" type="submit" value="Signup">
+        </form>
+        <p class="message"><%= message %></p>
+    </div>
+</body>
+
+</html>
